@@ -3,12 +3,16 @@ import sys
 import subprocess as sp 
 from random import randint 
 import time
+import os
 
 def breakline():
     print('*'*75)
 
 def clrscr():
-    sp.call('clear', shell=True) #Make clear to cls, if you're using windows.. 
+    if os.name == 'posix': #Posix stands for Linux.
+        sp.call('clear', shell=True) 
+    else:
+        sp.call('cls', shell=True) 
 
 def get_indices(List, element):
     return [x for x,y in enumerate(List) if y == element]
